@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Entity
 @Table( name = "Commande")
-public class Commande implements Serializable{
+public class Commande implements Serializable{ //test
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idCommande")
