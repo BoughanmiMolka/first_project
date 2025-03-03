@@ -1,10 +1,24 @@
 package tn.esprit.arctic.first_project.entities;
 import jakarta.persistence.*;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder
+@Slf4j
 @Table( name = "ChaineRestauration")
 public class ChaineRestauration implements Serializable{
     @Id
@@ -15,37 +29,7 @@ public class ChaineRestauration implements Serializable{
     private LocalDate dateCreation;
 
     @OneToMany(mappedBy = "chaineRestauration")
-    private List<Restaurant> restaurants;
+    private Set<Restaurant> restaurants;
 
-    public Long getIdChaineRestauration() {
-        return idChaineRestauration;
-    }
 
-    public void setIdChaineRestauration(Long idChaineRestauration) {
-        this.idChaineRestauration = idChaineRestauration;
-    }
-
-    public String getLibelle() {
-        return libelle;
-    }
-
-    public void setLibelle(String libelle) {
-        this.libelle = libelle;
-    }
-
-    public LocalDate getDateCreation() {
-        return dateCreation;
-    }
-
-    public void setDateCreation(LocalDate dateCreation) {
-        this.dateCreation = dateCreation;
-    }
-
-    public List<Restaurant> getRestaurants() {
-        return restaurants;
-    }
-
-    public void setRestaurants(List<Restaurant> restaurants) {
-        this.restaurants = restaurants;
-    }
 }

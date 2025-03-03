@@ -1,9 +1,22 @@
 package tn.esprit.arctic.first_project.entities;
 import jakarta.persistence.*;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder
+@Slf4j
 @Table( name = "Restaurant")
 public class Restaurant implements Serializable{
     @Id
@@ -14,42 +27,10 @@ public class Restaurant implements Serializable{
     private Long nbPlaceMax;
 
     @OneToMany
-    private List<Menu> menus; //relation 1-1 unidirectionnelle l restaurant yaaref l menu w l menu ma yaarefch l restaurant
+    private Set<Menu> menu;
 
     @ManyToOne
-    @JoinColumn( name = "idChaineRestauration")
     private ChaineRestauration chaineRestauration;
 
 
-    public Long getIdRestaurant() {
-        return idRestaurant;
-    }
-
-    public void setIdRestaurant(Long idRestaurant) {
-        this.idRestaurant = idRestaurant;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public Long getNbPlaceMax() {
-        return nbPlaceMax;
-    }
-
-    public void setNbPlaceMax(Long nbPlaceMax) {
-        this.nbPlaceMax = nbPlaceMax;
-    }
-
-    public ChaineRestauration getChaineRestauration() {
-        return chaineRestauration;
-    }
-
-    public void setChaineRestauration(ChaineRestauration chaineRestauration) {
-        this.chaineRestauration = chaineRestauration;
-    }
 }

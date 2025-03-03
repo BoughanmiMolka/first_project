@@ -1,9 +1,21 @@
 package tn.esprit.arctic.first_project.entities;
 import jakarta.persistence.*;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder
+@Slf4j
 @Table (name = "DetailComposant")
 public class DetailComposant implements Serializable{
     @Id
@@ -13,19 +25,4 @@ public class DetailComposant implements Serializable{
     @Enumerated(EnumType.STRING)
     private TypeComposant typeComposant;
 
-    public Float getImc() {
-        return imc;
-    }
-
-    public void setImc(Float imc) {
-        this.imc = imc;
-    }
-
-    public TypeComposant getTypeComposant() {
-        return typeComposant;
-    }
-
-    public void setTypeComposant(TypeComposant typeComposant) {
-        this.typeComposant = typeComposant;
-    }
 }
