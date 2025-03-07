@@ -10,10 +10,10 @@ import java.util.List;
 
 public class ClientService implements IClientService {
     ClientRepo clientRepository;
-//
+    //
     @Override
     public List<Client> retrieveAllClients() {
-        return clientRepository.findAll();
+        return clientRepository.findAll();  // Ensure clientRepository is not null
     }
 
     @Override
@@ -39,6 +39,6 @@ public class ClientService implements IClientService {
 
     @Override
     public List<Client> addClients(List<Client> clients) {
-       return clientRepository.saveAll(clients);
+        return clientRepository.saveAll(clients);
     }
 }
