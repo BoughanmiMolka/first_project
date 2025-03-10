@@ -9,12 +9,12 @@ import java.util.List;
 @AllArgsConstructor
 
 public class ClientService implements IClientService {
-    ClientRepo clientRepository;
+  ClientRepo clientRepository;
 //
-    @Override
-    public List<Client> retrieveAllClients() {
-        return clientRepository.findAll();
-    }
+@Override
+public List<Client> retrieveAllClients() {
+    return clientRepository.findAll();  // Ensure clientRepository is not null
+}
 
     @Override
     public Client addClient(Client e) {
