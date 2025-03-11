@@ -7,4 +7,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 @Repository
 //
 public interface ChefCuisinierRepo  extends JpaRepository<ChefCuisinier, Long>{
+
 }
