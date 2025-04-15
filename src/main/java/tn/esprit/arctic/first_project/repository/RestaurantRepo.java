@@ -11,5 +11,6 @@ public interface RestaurantRepo extends JpaRepository<Restaurant, Long>{
     List<Restaurant>findByChaineRestaurationLibelleAndChaineRestaurationDateCreation(String l, Date dateC);
     //1.5
     List<Restaurant> findByNbPlaceMaxGreaterThanAndChaineRestaurationDateCreationBefore(Long nbPlaceMax, Date dateC);
+    Restaurant findByNom(String nomRestaurant);
 
 }

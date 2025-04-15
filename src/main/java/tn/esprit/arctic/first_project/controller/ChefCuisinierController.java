@@ -37,5 +37,17 @@ public class ChefCuisinierController {
     public void removeChef(@PathVariable("chefId") Long chefId) {
         chefCuisinierService.removeChefCuisinier(chefId);
     }
+    @PutMapping("/affecter-chef/{idChef}/{idMenu}")
+    public ChefCuisinier affecterChefCuisinierAMenu(
+            @PathVariable("idChef") Long idChef,
+            @PathVariable("idMenu") Long idMenu) {
+        return chefCuisinierService.affecterChefCuisinierAMenu(idChef, idMenu);
+    }
+    @DeleteMapping("/desaffecter-chef/{idMenu}/{idChef}")
+    public ChefCuisinier desaffecterChefCuisinierDuMenu(
+            @PathVariable("idMenu") Long idMenu,
+            @PathVariable("idChef") Long idChef) {
+        return chefCuisinierService.desaffecterChefCuisinierDuMenu(idMenu, idChef);
+    }
 
 }

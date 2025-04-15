@@ -9,5 +9,7 @@ public interface IRestaurantService {
     Restaurant retrieveRestaurant(Long idRestaurant);
     void removeRestaurant(Long idRestaurant);
     List<Restaurant> addRestaurants (List<Restaurant> Restaurants);
+    Restaurant affecterRestaurantAChaineRestauration(String nomRestaurant, String libelleChaine);
+    Restaurant ajoutRestaurantEtMenuAssocies(Restaurant restaurant);
 }
 //

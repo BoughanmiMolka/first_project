@@ -7,4 +7,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 @Repository
 //
 public interface ChaineRestaurationRepo extends JpaRepository<ChaineRestauration, Long>{
+    ChaineRestauration findByLibelle(String Libelle);
 }

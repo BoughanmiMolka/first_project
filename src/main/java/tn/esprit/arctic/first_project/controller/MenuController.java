@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.arctic.first_project.entities.Composant;
 import tn.esprit.arctic.first_project.entities.Menu;
 import tn.esprit.arctic.first_project.entities.TypeMenu;
 import tn.esprit.arctic.first_project.repository.MenuRepo;
@@ -14,6 +15,7 @@ import tn.esprit.arctic.first_project.service.MenuService;
 import tn.esprit.arctic.first_project.service.IMenuService;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @AllArgsConstructor
@@ -47,8 +49,17 @@ public class MenuController {
     }
 
     @GetMapping("/getMenuByTypeandOrdre/{typeMenu}")
-    public List<String> findMenuByTypeMenuOrderByPrixTotal(@PathVariable("typeMenu") String typeMenuStr) {
+    public List<Menu> findMenuByTypeMenuOrderByPrixTotal(@PathVariable("typeMenu") String typeMenuStr) {
         TypeMenu typeMenu = TypeMenu.valueOf(typeMenuStr.toUpperCase());
         return menuRepo.findMenuByTypeMenuOrderByPrixTotal(typeMenu);
     }
+    @PutMapping("/ajoutComposants/{idMenu}")
+    public Menu ajoutComposantsEtMiseAjourPrixMenu(@RequestBody Set<Composant> composants, @PathVariable Long idMenu) {
+        return menuService.ajoutComposantsEtMiseAjourPrixMenu(composants, idMenu);
+    }
+    //@GetMapping("/nomMenuParTypeMenuOrdonneParPrixTotal/{typeMenu}")
+    //public List<String> nomMenuParTypeMenuOrdonneParPrixTotal(@PathVariable("typeMenu") String TM){
+    //    TypeMenu typeMenu = TypeMenu.valueOf(TM.toUpperCase());
+    //    return menuService.nomMenuParTypeMenuOrdonneParPrixTotal(typeMenu);
+    //}
 }

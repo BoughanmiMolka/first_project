@@ -34,8 +34,10 @@ public class Menu implements Serializable {
     @OneToMany(mappedBy = "menu")
     private Set<Commande> commandes;
 
-    @OneToMany(mappedBy = "menu")
+    @OneToMany(mappedBy = "menu", fetch = FetchType.EAGER)
     private Set<Composant> composant;
+    @ManyToOne (cascade = CascadeType.ALL)
+    private Restaurant restaurant;
 
 
 

@@ -15,10 +15,11 @@ public interface MenuRepo extends JpaRepository<Menu, Long>{
     List<Menu> findByTypeMenuAndPrixTotalGreaterThan(String typeMenu, float prixTotal);
     //2.1
     @Query("SELECT m.libelleMenu FROM Menu m WHERE m.typeMenu = :typeMenu ORDER BY m.prixTotal")
-    List<String> findMenuByTypeMenuOrderByPrixTotal(@Param("typeMenu") TypeMenu typeMenu);
+    List<Menu> findMenuByTypeMenuOrderByPrixTotal(@Param("typeMenu") TypeMenu typeMenu);
     //2.2
     @Query("SELECT DISTINCT m FROM Menu m JOIN m.composant c WHERE c.detailComposant.typeComposant = :typeComposant")
     List<Menu> findMenuByTypeComposant(@Param("typeComposant") String typeComposant);
+    Menu findByLibelleMenu(String libelleMenu);
 
 
 

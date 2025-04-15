@@ -6,5 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 @Repository
 //
 public interface ClientRepo extends JpaRepository<Client, Long> {//long heya type mtaa l pk déclarée fel entity
+    Client findByIdClient(Long identifiant);
 
 }

@@ -1,4 +1,5 @@
 package tn.esprit.arctic.first_project.entities;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -30,6 +31,7 @@ public class Restaurant implements Serializable{
     private Set<Menu> menu;
 
     @ManyToOne
+    @JsonIgnore
     private ChaineRestauration chaineRestauration;
 
 
