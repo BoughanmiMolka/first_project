@@ -86,6 +86,7 @@ public class CommandeService implements ICommandeService{
     }
 
     @Override
+    @Scheduled(cron = "*/30 * * * * ?")
     public void menuPlusCommande() {
         List<Commande> commandes = commandeRepository.findAll();
         List<Menu> menus = menuRepo.findAll();
@@ -104,4 +105,20 @@ public class CommandeService implements ICommandeService{
             }
             log.info("Le menu le plus commandé dans votre restaurant est " + menuPlusCommande.getLibelleMenu() + " avec " + maxCommandes + " commandes.");
     }
-}}
+    }
+
+    @Override
+    public void ajouterCommandeEtaffecterAClientEtMenu(Commande commande, Long idCommande, Long identifiant, String libelleMenu) {
+        Client client = clientRepo.findByIdClient(identifiant);
+        Menu menu = menuRepo.findByLibelleMenu(libelleMenu);
+        commande.setClient(client);
+        commande.setMenu(menu);
+        float remise  =  - (menu.getPrixTotal() * commande.getPourcentageRemise() / 100);
+        commande.setTotalRemise(remise);
+        commande.setTotalCommande(commande.getTotalCommande() - remise);
+        commandeRepository.save(commande);
+
+    }
+
+
+}
