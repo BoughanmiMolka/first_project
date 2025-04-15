@@ -23,13 +23,13 @@ public class Client implements Serializable {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name="idClient")
-     Long idClient; // Clé primaire
-     String identifiant;
+    Long idClient; // Clé primaire
+    String identifiant;
     @Temporal(TemporalType.DATE)
-     Date datePremiereVisite;
+    Date datePremiereVisite;
 
     @OneToMany(mappedBy = "client")
-     Set<Commande> commandes;
+    Set<Commande> commandes;
 
 
 
