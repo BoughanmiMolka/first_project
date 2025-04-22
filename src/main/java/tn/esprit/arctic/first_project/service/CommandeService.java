@@ -74,7 +74,7 @@ public class CommandeService implements ICommandeService{
     }
 
     @Override
-    @Scheduled(cron = "*/20 * * * * ?")
+    //@Scheduled(cron = "*/20 * * * * ?")
     public void findCurrentYearCommandesOrderByNote() {
         List<Commande> commandes = commandeRepository.findCommandesBetweenDates(
                 LocalDate.of(LocalDate.now().getYear(), 1, 1),
@@ -86,7 +86,7 @@ public class CommandeService implements ICommandeService{
     }
 
     @Override
-    @Scheduled(cron = "*/30 * * * * ?")
+    //@Scheduled(cron = "*/30 * * * * ?")
     public void menuPlusCommande() {
         List<Commande> commandes = commandeRepository.findAll();
         List<Menu> menus = menuRepo.findAll();
